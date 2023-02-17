@@ -19,7 +19,6 @@ import java.time.LocalDate;
 
 
 @WebServlet(name = "CheckPersonServlet", urlPatterns = {"/checkPerson"})
-
 public class CheckPersonServlet extends HttpServlet
 {
     public static final Logger logger = LoggerFactory.getLogger(CheckPersonServlet.class);
