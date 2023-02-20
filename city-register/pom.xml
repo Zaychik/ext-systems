@@ -16,11 +16,15 @@
     </properties>
 
     <dependencies>
+
+        <!--Подключение к postgresql-->
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <version>42.5.2</version>
         </dependency>
+
+        <!--для автотестов-->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -28,6 +32,7 @@
             <scope>test</scope>
         </dependency>
 
+        <!--для сервлетов и сервисов-->
         <dependency>
             <groupId>jakarta.platform</groupId>
             <artifactId>jakarta.jakartaee-api</artifactId>
@@ -35,7 +40,7 @@
             <scope>provided</scope>
         </dependency>
 
-
+        <!--для логирования-->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
@@ -47,22 +52,25 @@
             <version>1.7.26</version>
         </dependency>
 
+        <!--для сервлетов и сервисов-->
         <dependency>
             <groupId>org.glassfish.jersey.containers</groupId>
             <artifactId>jersey-container-servlet</artifactId>
             <version>3.1.1</version>
         </dependency>
+        <!--чтоб хорошо работали аннотации-->
         <dependency>
             <groupId>org.glassfish.jersey.inject</groupId>
             <artifactId>jersey-hk2</artifactId>
             <version>3.1.1</version>
         </dependency>
-
+        <!-- подключение к json-->
         <dependency>
             <groupId>org.glassfish.jersey.media</groupId>
             <artifactId>jersey-media-moxy</artifactId>
             <version>3.1.1</version>
         </dependency>
+        <!-- подключение к json-->
         <dependency>
             <groupId>javax.xml.bind</groupId>
             <artifactId>jaxb-api</artifactId>

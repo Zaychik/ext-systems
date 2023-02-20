@@ -29,7 +29,7 @@ public class CheckPersonService {
     }
 
     @POST
-    @Singleton
+    @Singleton //удаление и создание тольок один раз
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public PersonResponse checkPerson(PersonRequest request) throws PersonCheckException {
