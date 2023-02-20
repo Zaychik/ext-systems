@@ -1,0 +1,26 @@
+База Знаний
+	1. Конструкторы детей обязательно должны вызывать конструкторы предков, но необязательно с теми же параметрами.
+	2. Интерфейс = Абстрактный клас
+		2.1. Не может иметь реализацию
+		2.2. фактически интерфейс это для полимфизма
+	3. Исключения....
+	4. Работа со строчками ...
+		4.1 ps.equals 
+		4.2 StringBuilder
+	5. Коллекции
+		5.1. List 
+		5.2. Set
+		5.3. Map
+		5.4. Queue
+	6. Работа с БД
+		6.1. return DriverManager.getConnection("jdbc:postgresql://localhost/city_register", "postgres", "postgres");
+		6.2. dataSource = (DataSource) ctx.lookup("java:comp/env/jdbc/cityRegister");
+		P.S. Реализованно ввидео интерфейса ConnectionBuilder в проекте city-Register
+	
+	
+	
+Синтаксис и полезный конструкции
+	1. if (person instanceof Adult)
+		Adult t = (Adult) person
+	2.
+	
