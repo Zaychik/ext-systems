@@ -1,26 +1,98 @@
 База Знаний
 	1. Конструкторы детей обязательно должны вызывать конструкторы предков, но необязательно с теми же параметрами.
+	
 	2. Интерфейс = Абстрактный клас
 		2.1. Не может иметь реализацию
 		2.2. фактически интерфейс это для полимфизма
+		
 	3. Исключения....
+	
 	4. Работа со строчками ...
-		4.1 ps.equals 
-		4.2 StringBuilder
+		4.1. ps.equals 
+		4.2. StringBuilder
+		4.3. String cl = "(" + result.stream().map(so -> String.valueOf(so.getStudentOrderId())).collect(Collectors.joining(",")) + ")";
+		
 	5. Коллекции
 		5.1. List 
+			5.1.1. List<StudentOrder> result = new LinkedList<>(); result.add(so);
+			5.1.2. List<String> str1 = Files.readAllLines(Paths.get(url1.toURI()));
 		5.2. Set
 		5.3. Map
+			5.3.1. Map<Long, StudentOrder> maps = new HashMap<>();
+			5.3.2.  if (!maps.containsKey(soId)) {
+					StudentOrder so = getFullStudentOrder(rs);
+
+					result.add(so);
+					maps.put(soId, so);
+					}
+					StudentOrder so = maps.get(soId);
+			5.3.3. Map<Long, StudentOrder> maps = result.stream().collect(Collectors.toMap(so -> so.getStudentOrderId(), so -> so));
 		5.4. Queue
+		
 	6. Работа с БД
 		6.1. return DriverManager.getConnection("jdbc:postgresql://localhost/city_register", "postgres", "postgres");
+		
 		6.2. dataSource = (DataSource) ctx.lookup("java:comp/env/jdbc/cityRegister");
-		P.S. Реализованно ввидео интерфейса ConnectionBuilder в проекте city-Register
-	
+			6.2.1. META-INF\context.xml
+			6.2.2. WEB-INF\web.xml
+			P.S. Реализованно ввидео интерфейса ConnectionBuilder в проекте city-Register	
+		6.3. try(Connection con = getConnection();
+                 PreparedStatement stmt = con.prepareStatement(sql))
+			!!!Обязательно в try чтоб автоматически удалялось.
+			
+			6.3.1.  PreparedStatement stmt = con.prepareStatement(INSERT_ORDER, new String[]{"student_order_id"}))
+					ResultSet gkRs = stmt.getGeneratedKeys();
+					if (gkRs.next()) {
+						result = gkRs.getLong(1);
+					}
+					gkRs.close();
+		6.4. con.setAutoCommit(false);  con.commit(); con.rollback();
+	7. Reflection (class Server проекта IdeaProjects\ext-systems\network-tcp)
+		7.1 Метод loadHandlers 
+			Class<Greetable> cl = (Class<Greetable>) Class.forName(className);
+            Greetable handler = cl.getConstructor().newInstance();
+		Аннотация 
+			К классу
+			К методу
+			к вход параметру
+	8. Логирование В72
+		8.1. Инфа
+				log4j    |
+				jdk       } slf4j
+				logback  |
+				simple   |
+				
+				trace если жопа, слишком подробно
+				debug   сщщбщения + парметры
+				info     default
+				warning почти ошибки
+				error
+		8.2. private static final Logger logger = LoggerFactory.getLogger(CheckPersonService.class);	
+			 logger.info("SERVICE is created {} {}", dt1, dt2);
+	9. Servlet
+		9.1.  Жизненный цикл
+			1. Иницилизация
+				только 1 жкземпляр
+			2. Работа
+			3. Уничтожение
+	10. SOLID - https://habr.com/ru/company/vk/blog/412699/
+	11. Rest В101
+		11.1. Входные параметры 
+			11.1.1. @Path("/{id}"); @PathParam("id"); @QueryParam("name");
+			11.1.2. @Consumes(MediaType.APPLICATION_JSON) В105
+		11.2. Выходные параметры @Produces(MediaType.APPLICATION_JSON)
+			
+		
 	
 	
 Синтаксис и полезный конструкции
 	1. if (person instanceof Adult)
 		Adult t = (Adult) person
-	2.
+		
+	2.  ResultSet rs = stmt.executeQuery();
+        if(rs.next()){
+			response.setRegistered(true);
+            response.setTemporal(rs.getBoolean("temporal"));
+        }
+	3. stmt.setTimestamp(2, java.sql.Timestamp.valueOf(LocalDateTime.now()));
 	
