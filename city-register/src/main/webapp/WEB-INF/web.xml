@@ -6,6 +6,7 @@
          version="3.1">
 
     <display-name>City Register</display-name>
+
     <servlet>
         <servlet-name>JerseyServlet</servlet-name>
         <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>

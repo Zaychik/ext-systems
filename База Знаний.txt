@@ -75,13 +75,37 @@
 				только 1 жкземпляр
 			2. Работа
 			3. Уничтожение
+		9.2. Либо анатации @WebServlet(name = "CheckPersonServlet", urlPatterns = {"/checkPerson"}) ИЛИ  прописать servlet-mapping в web.xml
 	10. SOLID - https://habr.com/ru/company/vk/blog/412699/
 	11. Rest В101
 		11.1. Входные параметры 
 			11.1.1. @Path("/{id}"); @PathParam("id"); @QueryParam("name");
 			11.1.2. @Consumes(MediaType.APPLICATION_JSON) В105
 		11.2. Выходные параметры @Produces(MediaType.APPLICATION_JSON)
-			
+		11.3. Отправить запрос 
+		    Client client = ClientBuilder.newClient();
+            CityRegisterResponse response = client.target(
+                     Config.getProperty(Config.CR_URL))
+                    .request(MediaType.APPLICATION_JSON)
+                    .post(Entity.entity(request, MediaType.APPLICATION_JSON))
+                    .readEntity(CityRegisterResponse.class);
+	12. ORM
+			resources\META-INF\persistence.xml
+			EntityManagerFactory emf = Persistence.createEntityManagerFactory("persistence");
+			EntityManager em = emf.createEntityManager();
+			em.getTransaction().begin();
+			em.persist(p);
+			em.getTransaction().commit();
+			em.close();
+
+
+	13. Немного об архитектуре Enterprise-приложения. В113 спецификация JIE
+		WEB  		 (принять и проверить) (JSF, ZK)
+		Business 	 (организовать набор обьектов и транзакционасть, общаться в Persistence) (Spring FrameWork)
+		Persistence  (общаться с БД) (Hybirnet)
+		Выпуск 113.
+		
+	
 		
 	
 	
