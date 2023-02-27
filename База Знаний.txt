@@ -107,18 +107,21 @@
 							@DiscriminatorColumn(name = "sex", discriminatorType = DiscriminatorType.INTEGER) как различать классы в таблице
 						Каждого "ребенка" в свою доп таблицу
 						Каждого "ребенка" в свою таблицу
-						
-			На класс
-				@Table(name = "ro_passport")
-				@Entity
-			На поля			
-				@Id это идентфикатор
-				@GeneratedValue(strategy = GenerationType.IDENTITY) генерация на БД
-				@Column(name = "passport_id")
-				@ManyToOne(cascade = {CascadeType.REFRESH}, fetch = FetchType.LAZY) --CascadeType что сделать с связанные таблицами, fetch вытаскивать ли связанные
-						@ManyToOne - Eager @OneToMany - LAZY
-						mappedBy = "person"
-				@JoinColumn(name = "person_id") по какому полу джойнится
+			12.2. На что ставится аннотации			
+				На класс
+					@Table(name = "ro_passport")
+					@Entity
+				На поля			
+					@Id это идентфикатор
+					@GeneratedValue(strategy = GenerationType.IDENTITY) генерация на БД
+					@Column(name = "passport_id")
+					@ManyToOne(cascade = {CascadeType.REFRESH}, fetch = FetchType.LAZY) --CascadeType что сделать с связанные таблицами, fetch вытаскивать ли связанные
+							@ManyToOne - Eager @OneToMany - LAZY
+							mappedBy = "person"
+					@JoinColumn(name = "person_id") по какому полу джойнится
+			12.3. HQL
+				Обращение не таблицам БД а к объектам ORM.
+				Но существуют LEFT JOIN FETCH
 				
 
 	13. Немного об архитектуре Enterprise-приложения. В113 спецификация JIE
