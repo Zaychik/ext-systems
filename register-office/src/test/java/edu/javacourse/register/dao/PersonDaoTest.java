@@ -3,17 +3,25 @@ package edu.javacourse.register.dao;
 import edu.javacourse.register.domain.Person;
 import edu.javacourse.register.domain.PersonFemale;
 import edu.javacourse.register.domain.PersonMale;
+import edu.javacourse.register.rest.MarriageController;
 import org.junit.jupiter.api.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
-
 class PersonDaoTest {
 
     @Test
     public void findPersons() {
-        PersonDao dao = new PersonDao();
+        ApplicationContext context = new ClassPathXmlApplicationContext(
+                new String[]{"springContext.xml"}
+        );
+
+        PersonDao dao = context.getBean(PersonDao.class);
+
+        //PersonDao dao = new PersonDao();
         List<Person> persons = dao.findPersons();
 
         persons.forEach(p -> {

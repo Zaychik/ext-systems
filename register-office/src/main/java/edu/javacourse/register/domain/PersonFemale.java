@@ -7,7 +7,7 @@ import java.util.List;
 @Entity
 @DiscriminatorValue("1")
 public class PersonFemale extends Person{
-    @OneToMany(cascade = {CascadeType.REFRESH}, fetch = FetchType.LAZY,
+    @OneToMany(cascade = {CascadeType.REFRESH}, fetch = FetchType.EAGER,
             mappedBy = "wife")
     private List<MarriageCertificate> marriageCertificates;
     @OneToMany(cascade = {CascadeType.REFRESH}, fetch = FetchType.LAZY,

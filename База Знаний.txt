@@ -132,6 +132,7 @@
 	14. Потоки 
 		extends Thread в SimpleServer В90
 	15. Spring В121 - 122
+		Спринг - создание мира обектов. И внедрение кода в нужные места (аспекты)
 		121 - xml  ApplicationContext context = new ClassPathXmlApplicationContext(new String[]{"springContext.xml"}
         );
 		122 - аннотации
@@ -139,6 +140,15 @@
 			@Component - для описанией полей?!
 			@Autowired - на поля или на сеттер или на конструктор, связь одного класа с другим. Дажеможно убрать сеттеры
 			@Configuration -  специальный  класс, которому мы просим сотворить бин особым образом 
+			@Qualifier - указать на какой именно класс связаться
+			@Scope - сколько объектов создавать
+		123 - Подключение к бд
+			Подключаем спринг орм
+			для ReadOnly определяем правила подклчения + LocalCOntainer + properties
+			@PersistentContext
+		124
+		 flush
+			
 	
 		
 	

@@ -1,21 +1,22 @@
 package edu.javacourse.register.dao;
 
 import edu.javacourse.register.domain.Person;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
+import jakarta.persistence.*;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+
+
 public class PersonDao {
+    @PersistenceContext
     private EntityManager entityManager;
 
-    public PersonDao() {
-        EntityManagerFactory factory = Persistence.createEntityManagerFactory("persistence");
-        entityManager = factory.createEntityManager();
-    }
-
+    //@Transactional(propagation= Propagation.REQUIRED, readOnly=true, noRollbackFor=Exception.class)
     public List<Person> findPersons() {
-        return entityManager.createQuery("SELECT p FROM Person p").getResultList();
+        Query query = entityManager.createNamedQuery("Person.findPersons");
+        query.setParameter("personId", 1L);
+        return query.getResultList();
     }
 }
