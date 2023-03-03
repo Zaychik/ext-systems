@@ -138,7 +138,7 @@
 		122 - аннотации
 			@Service - для API
 			@Component - для описанией полей?!
-			@Autowired - на поля или на сеттер или на конструктор, связь одного класа с другим. Дажеможно убрать сеттеры
+			@Autowired - на поля или на сеттер или на конструктор, связь одного класа с другим. Даже можно убрать сеттеры
 			@Configuration -  специальный  класс, которому мы просим сотворить бин особым образом 
 			@Qualifier - указать на какой именно класс связаться
 			@Scope - сколько объектов создавать
@@ -156,6 +156,7 @@
 				1. Имя метода состовляется определнным образом
 				2. Именновонный запрос с использование @Param..имя именнованного запроса совпадает с именем метода
 				3. Аннотация Query
+		127 рассказ про web.xml
 				
 		129
 			Подключаем тест к спрингу
@@ -182,3 +183,5 @@
 		List<Person> persons = personDao.findPersons();
 		for(Person person : persons) {
 	
+	5.        List<StudentDocument> docs = student.get(0).getDocuments();
+        List<StudentResponse> result = docs.stream().map(d -> getResponse(d)).collect(Collectors.toList());

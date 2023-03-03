@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collections;
 import java.util.List;
@@ -19,14 +20,12 @@ public class StudentService {
     private static final Logger LOGGER = LoggerFactory.getLogger(StudentService.class);
     @Autowired
     private StudentRepository studentRepository;
-    public void simpleCall() {
-        LOGGER.info("CALLED !!!");
-    }
 
+    @Transactional
     public List<StudentResponse> getStudentInfo(StudentRequest request) {
         List<Student> student = studentRepository.findStudent(request.getLastName(),
                 request.getFirstName(),
-                request.getModdleName(),
+                request.getMiddleName(),
                 request.getDateOfBirth(),
                 request.getPassportSeria(),
                 request.getPassportNumber(),
