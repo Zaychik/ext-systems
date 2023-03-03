@@ -117,8 +117,8 @@
 					@Column(name = "passport_id")
 					@ManyToOne(cascade = {CascadeType.REFRESH}, fetch = FetchType.LAZY) --CascadeType что сделать с связанные таблицами, fetch вытаскивать ли связанные
 							@ManyToOne - Eager @OneToMany - LAZY
-							mappedBy = "person"
-					@JoinColumn(name = "person_id") по какому полу джойнится
+							mappedBy = "person" здесь указывается обект ОРМ
+					@JoinColumn(name = "person_id") по какому полу джойнится.Здесь указывать поле БД
 			12.3. HQL
 				Обращение не таблицам БД а к объектам ORM.
 				Но существуют LEFT JOIN FETCH
@@ -147,7 +147,14 @@
 			для ReadOnly определяем правила подклчения + LocalCOntainer + properties
 			@PersistentContext
 		124
-		 flush
+			flush
+			Транзакции
+		125
+			Spring Data - как можно написать dao
+			https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#jpa.query-methods
+			Два метода создание своих методов:
+				1. Имя метода состовляется определнным образом
+				2. Именновонный запрос с использование @Param..имя именнованного запроса совпадает с именем метода
 			
 	
 		
