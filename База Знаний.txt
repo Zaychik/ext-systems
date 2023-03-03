@@ -125,7 +125,7 @@
 				
 
 	13. Немного об архитектуре Enterprise-приложения. В113 спецификация JIE
-		WEB  		 (принять и проверить) (JSF, ZK)
+		WEB  		 (принять и проверить) (JSF, ZK) Jersey
 		Business 	 (организовать набор обьектов и транзакционасть, общаться в Persistence) (Spring FrameWork)
 		Persistence  (общаться с БД) (Hybirnet)
 		Выпуск 113.
@@ -152,10 +152,15 @@
 		125
 			Spring Data - как можно написать dao
 			https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#jpa.query-methods
-			Два метода создание своих методов:
+			Три метода создание своих методов:
 				1. Имя метода состовляется определнным образом
 				2. Именновонный запрос с использование @Param..имя именнованного запроса совпадает с именем метода
-			
+				3. Аннотация Query
+				
+		129
+			Подключаем тест к спрингу
+			@RunWith(SpringRunner.class)
+			@ContextConfiguration(locations = {"classpath:springContext.xml"})
 	
 		
 	
@@ -173,4 +178,7 @@
         }
 	3. stmt.setTimestamp(2, java.sql.Timestamp.valueOf(LocalDateTime.now()));
 	4. list.forEach(p1 -> System.out.println(p1));
+		
+		List<Person> persons = personDao.findPersons();
+		for(Person person : persons) {
 	
