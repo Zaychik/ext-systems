@@ -162,6 +162,21 @@
 			Подключаем тест к спрингу
 			@RunWith(SpringRunner.class)
 			@ContextConfiguration(locations = {"classpath:springContext.xml"})
+	133 WEB программирование
+	135 JSP нарисовать страничку с данными
+	137 Научились взаимодействовать сервлет со спрингом, а именно получать контекст спринга, и через контекст
+		общатьсяс компонентами внутри
+		ServletContext ctx = getServletContext();
+        WebApplicationContext webCtx = WebApplicationContextUtils.getWebApplicationContext(ctx);
+
+        UniversityService service = webCtx.getBean(UniversityService.class);
+        List<University> list = service.findUniversities();
+        list.forEach(u -> System.out.println())
+		
+	140 Как решать вопрос с LazyInitializationException
+			1. Eager
+			2. Hibernate.initialize(fc.getUniversity());
+			3. Нативный запрос
 	
 		
 	
