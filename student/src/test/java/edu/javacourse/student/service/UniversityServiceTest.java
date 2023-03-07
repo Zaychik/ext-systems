@@ -23,7 +23,7 @@ public class UniversityServiceTest {
         List<University> list = service.findUniversities();
         System.out.println("OK");
         list.forEach(u -> System.out.println(
-                u.getUniversityId() + ":" + u.getUniversityName() + ":" + u.getFaculties().size()));
+                u.getUniversityId() + ":" + u.getUniversityName()));
     }
     @Test
     public void findFullUniversities() {
