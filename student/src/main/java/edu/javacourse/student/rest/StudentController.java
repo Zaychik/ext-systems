@@ -3,17 +3,14 @@ package edu.javacourse.student.rest;
 import edu.javacourse.student.service.StudentService;
 import edu.javacourse.student.view.StudentRequest;
 import edu.javacourse.student.view.StudentResponse;
-import jakarta.ws.rs.Consumes;
-import jakarta.ws.rs.POST;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.Produces;
-import jakarta.ws.rs.core.MediaType;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
 
+
+
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 
@@ -23,10 +20,9 @@ public class StudentController {
     @Autowired
     private StudentService studentService;
 
-    //@POST
-    //@Consumes(MediaType.APPLICATION_JSON)
-    //@Produces(MediaType.APPLICATION_JSON)
-    public List<StudentResponse> getStudentInfo(StudentRequest request) {
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public List<StudentResponse> getStudentInfo(@RequestBody StudentRequest request) {
         return studentService.getStudentInfo(request);
     }
 
@@ -35,4 +31,15 @@ public class StudentController {
         return "Rest Service is working";
     }
 
+    @GetMapping(path = "/params/{checkId}")
+    public String checkParams(@PathVariable("checkId") Long checkId,
+                              @RequestParam("comment") String comment) {
+        return checkId + ":" +comment;
+    }
+
+
+    @PostMapping(path = "/photo", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public String uploadPhoto(@RequestParam("comment") String comment) {
+        return ":" +comment;
+    }
 }

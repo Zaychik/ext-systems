@@ -23,6 +23,7 @@ public class StudentService {
 
     @Transactional
     public List<StudentResponse> getStudentInfo(StudentRequest request) {
+        LOGGER.info(request.toString());
         List<Student> student = studentRepository.findStudent(request.getLastName(),
                 request.getFirstName(),
                 request.getMiddleName(),

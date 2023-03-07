@@ -54,8 +54,14 @@
         <property name="entityManagerFactory" ref="emf" />
     </bean>
 
+    <bean id="commonsMultipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver"/>
 
-    <!-- <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"/> -->
+    <!--<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxUploadSize" value="200000"/>
+    </bean>
+
+
+     <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"/> -->
     <mvc:annotation-driven/>
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">

@@ -177,8 +177,42 @@
 			1. Eager
 			2. Hibernate.initialize(fc.getUniversity());
 			3. Нативный запрос
-	
-		
+			
+	143 Spring mvc
+		изучаю работу транзакций по книге Spring recipies третье издание автора Marten Deinum
+		1. dispatcher
+		2. Маппинг
+			а. URL  - <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"/>
+			б. <mvc:annotation-driven/>
+		3. Контроллер
+			@RestController
+			@RequestMapping(path = "/student")
+			@GetMapping(path = "/check")
+			
+			    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+				@ResponseBody - говорим что json  в теле ответа 
+				public List<StudentResponse> getS
+				tudentInfo(@RequestBody StudentRequest request) { --говорим что json запроса в теле
+	145 Для создания Rest servica on Spring
+	 1. Подключить spring webmvc
+	 2. прописываем дистпетчер сервлет
+	 3. в контексте спринга прописывает специ команду которые ищет классы с аннотацией
+	 4. Написали рест контроллер с маппингом и настрйокам на вход и выходами
+	 5. Связка json с обыным классом jackson-datebind 
+	 6. Конвертация даты в строку и обратно
+	 
+	 148. Загрузка файла
+		Прописываем  @PostMapping(path = "/photo", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+		<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+			<property name="maxUploadSize" value="200000"/>
+		</bean>
+		<dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+            <version>1.4</version>
+        </dependency>
+	 
+	 
 	
 		
 	
@@ -200,3 +234,7 @@
 	
 	5.        List<StudentDocument> docs = student.get(0).getDocuments();
         List<StudentResponse> result = docs.stream().map(d -> getResponse(d)).collect(Collectors.toList());
+		
+		
+		Кладовочка Java-программиста
+		\используйте React...шаблоны  jsp и thymeleaf мало кто пишет...Java это backend
